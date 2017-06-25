@@ -1,11 +1,6 @@
 /**
  * Created by Admin on 6/23/2017.
  */
-$(document).ready(function () {
-
-})
-
-
 document.body.addEventListener('click', function(event) {
     var parent = event.target.parentNode;
     if(event.target.classList[0]== 'edit'){
@@ -18,6 +13,14 @@ document.body.addEventListener('click', function(event) {
     }
     if (event.target.type == 'checkbox') {
         moveTask(event.target.checked,event.target.parentNode);
+    }
+    if(event.target.id == 'new'){
+        console.log(event.target);
+        var taskList = document.getElementById('incomplete-tasks');
+        var task = parent.querySelector('input').value;
+        var li = document.createElement('li');
+        li.innerHTML =  '<input type="checkbox" ><p><em>'+ task+'</em></p><button class="edit">Edit</button><button class="delete">Delete</button>'
+        taskList.appendChild(li)
     }
 });
 
