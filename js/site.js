@@ -14,15 +14,14 @@ window.onload = function () { // on page load, fill fields with tasks from local
         done.innerHTML =''
     }
     typeof localStorage.todo!='undefined' ? todo.innerHTML = localStorage.todo : todo.innerHTML ='';
-}
+};
 document.body.addEventListener('click', function(event) { // add event listeners for several conditions, bot dynamically loaded content and already loaded content
     var parent = event.target.parentNode; // parent of clicked element
-
     if(hasClass(event.target,'edit')){ // if clicked button is edit button, enable editing
         var textElement = parent.querySelector('p');
         textElement.setAttribute("contenteditable", true);
         textElement.focus();
-    };
+    }
     if (hasClass(event.target,'delete')) { // if clicked button is delete button, delete task
         parent.remove();
         saveStorage();
@@ -64,7 +63,7 @@ document.body.addEventListener('click', function(event) { // add event listeners
         parent.querySelector('input').value = '';
         var li = document.createElement('li');
         li.innerHTML =  '<input type="checkbox"><p class="taskText"><strong>'+ task+'</strong></p><button class="edit btn" title="Edit" class="edit"><i class="fa fa-pencil-square-o"></i></button>' +
-            '<button class=" delete btn" title="Delete" class="delete"><i class="fa fa-trash-o"></i></button>'
+            '<button class=" delete btn" title="Delete" class="delete"><i class="fa fa-trash-o"></i></button>';
         taskList.appendChild(li);
         saveStorage();
     }
@@ -74,7 +73,7 @@ document.body.addEventListener('focusout', function(event) { // when done task e
     if(hasClass(event.target,'taskText') && event.target.contentEditable == 'true'){
         event.target.contentEditable = 'false';
         saveStorage()
-    };
+    }
 });
 
 function moveTask(checked,task) { // if checkbox is checked, add to completed list, else add to ToDo list
@@ -112,7 +111,7 @@ function sortTasks(ul, sortDescending) { // sort ul li elements, depending on 2n
     if(sortDescending){
         vals.reverse();
     }
-    for(var i = 0, l = tasks.length; i < l; i++){
+    for( i = 0, l = tasks.length; i < l; i++){
         tasks[i].innerHTML = vals[i];
     }
     saveStorage();
