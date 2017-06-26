@@ -1,6 +1,10 @@
 /**
  * Created by Admin on 6/23/2017.
  */
+ 
+ // Time spent on task : ~5 hours;
+ 
+ 
 window.onload = function () { // on page load, fill fields with tasks from localstorage
     var done = document.getElementById('done');
     var todo = document.getElementById('todo');
